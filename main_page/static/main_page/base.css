@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(183, 123, 239);
+    padding-top: 80px; /* Space for fixed navbar */
+}

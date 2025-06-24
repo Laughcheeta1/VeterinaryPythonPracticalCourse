@@ -13,6 +13,7 @@
 
         body {
             background-color: rgb(183, 123, 239);
+            padding-top: 80px; /* Space for fixed navbar */
         }
 
         .navbar {
@@ -22,6 +23,11 @@
             background-color: white;
             padding: 1rem 2rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .navbar-logo {
@@ -48,6 +54,7 @@
             font-size: 14px;
             font-weight: normal;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .navbar-btn:hover {
@@ -59,6 +66,34 @@
         .navbar-btn:active {
             color: #555;
         }
+
+        .welcome_image {
+            margin: 0.75rem;
+            margin-right: 0;
+            float: right;
+            width: 55%;
+            height: auto;
+        }
+
+        .welcome_paragraph {
+            float: left;
+            width: 40%;  /* Takes up left half of the screen */
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .welcome_paragraph h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome_paragraph p {
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
     </style>
 </head>
 <body>
@@ -66,23 +101,30 @@
     <nav class="navbar">
         <!-- Left side: Logo/Image -->
         <div class="navbar-logo">
-            <img src="{% static 'main_page/images/VetLogo.png' %}" alt="Logo">
+            <a href="{% url 'main_page' %}">
+                <img src="{% static 'main_page/images/VetLogo.png' %}" alt="Logo" onclick="">
+            </a>
         </div>
 
         <!-- Right side: 9 Buttons -->
         <div class="navbar-buttons">
-            <button class="navbar-btn">Home</button>
-            <button class="navbar-btn">About</button>
-            <button class="navbar-btn">Services</button>
-            <button class="navbar-btn">Portfolio</button>
-            <button class="navbar-btn">Team</button>
-            <button class="navbar-btn">Blog</button>
-            <button class="navbar-btn">Contact</button>
-            <button class="navbar-btn">Login</button>
-            <button class="navbar-btn">Sign Up</button>
+            <a href="{% url 'main_page' %}" class="navbar-btn">Home</a>
+            <a href="#" class="navbar-btn">About</a>
+            <a href="#" class="navbar-btn">Services</a>
+            <a href="#" class="navbar-btn">Portfolio</a>
+            <a href="#" class="navbar-btn">Team</a>
+            <a href="#" class="navbar-btn">Blog</a>
+            <a href="#" class="navbar-btn">Contact</a>
+            <a href="#" class="navbar-btn">Login</a>
+            <a href="#" class="navbar-btn">Sign Up</a>
         </div>
     </nav>
 
-    <img src="{% static 'main_page/images/ImageForVeterinary.png' %}" alt="Pets Posing" width="1000" >
+    <img src="{% static 'main_page/images/ImageForVeterinary.png' %}" class="welcome_image" alt="Pets Posing" width="1000" >
+    <div class="welcome_paragraph">
+        <h1>Welcome to Our Veterinary Clinic</h1>
+        <p>We provide the best care for your beloved pets. Our experienced veterinarians are dedicated to keeping your furry friends healthy and happy.</p>
+        <p>From routine check-ups to emergency care, we're here for you and your pets 24/7.</p>
+    </div>
 </body>
 </html>

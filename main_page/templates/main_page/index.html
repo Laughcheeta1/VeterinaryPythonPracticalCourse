@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -36,7 +39,7 @@
         }
 
         .navbar-logo img {
-            height: 40px;
+            height: 80px;
             width: auto;
         }
 
@@ -51,7 +54,7 @@
             border: none;
             padding: 0.75rem 1rem;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: normal;
             transition: all 0.3s ease;
             text-decoration: none;
@@ -84,14 +87,20 @@
 
         .welcome_paragraph h1 {
             color: white;
-            font-size: 2.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
+            font-family: 'Caprasimo', 'Comic Sans MS';
+            font-style: normal;
+            font-weight: 400;
         }
 
         .welcome_paragraph p {
             color: white;
             font-size: 1.2rem;
             line-height: 1.6;
+            font-family: 'Caprasimo', 'Comic Sans MS';
+            font-style: normal;
+            font-weight: 10;
         }
 
     </style>
@@ -122,9 +131,9 @@
 
     <img src="{% static 'main_page/images/ImageForVeterinary.png' %}" class="welcome_image" alt="Pets Posing" width="1000" >
     <div class="welcome_paragraph">
-        <h1>Welcome to Our Veterinary Clinic</h1>
-        <p>We provide the best care for your beloved pets. Our experienced veterinarians are dedicated to keeping your furry friends healthy and happy.</p>
-        <p>From routine check-ups to emergency care, we're here for you and your pets 24/7.</p>
+        <h1>Bienvenido a Amigos Peludos</h1>
+        <p>La clinica veterinaria con mas trayectoria y exitos en Medellin</p><br>
+        <p>Estamos disponibles para ti 24/7</p>
     </div>
 </body>
 </html>

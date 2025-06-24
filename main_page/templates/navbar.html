@@ -1,0 +1,25 @@
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main_page/navbar_style.css' %}">
+{% endblock %}
+
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="{% url 'main_page' %}">
+            <img src="{% static 'main_page/images/VetLogo.png' %}" alt="Logo" onclick="">
+        </a>
+    </div>
+
+    <div class="navbar-buttons">
+        <a href="{% url 'main_page' %}" class="navbar-btn">Home</a>
+        <a href="#" class="navbar-btn">About</a>
+        <a href="#" class="navbar-btn">Services</a>
+        <a href="#" class="navbar-btn">Portfolio</a>
+        <a href="#" class="navbar-btn">Team</a>
+        <a href="#" class="navbar-btn">Blog</a>
+        <a href="#" class="navbar-btn">Contact</a>
+        <a href="#" class="navbar-btn">Login</a>
+        <a href="#" class="navbar-btn">Sign Up</a>
+    </div>
+</nav>

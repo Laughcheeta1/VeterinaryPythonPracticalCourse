@@ -6,4 +6,4 @@ class Appointment(models.Model):
     date = models.DateField()
     motive = models.CharField(max_length=250)
     diagnosis = models.CharField(max_length=1000)
-    pet = models.ForeignKey(Pet, on_delete=models.SET_NULL)
+    pet = models.ForeignKey(Pet, on_delete=models.SET_NULL, null=True)

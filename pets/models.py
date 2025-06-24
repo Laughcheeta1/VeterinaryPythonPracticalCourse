@@ -17,4 +17,4 @@ class Pet(models.Model):
         max_length=20,
         validators=[MinLengthValidator(1)]
         )
-    owner = models.ForeignKey(User, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

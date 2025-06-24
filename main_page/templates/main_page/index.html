@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(183, 123, 239);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .navbar-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .navbar-btn {
+            background-color: transparent;
+            color: #07454f;
+            border: none;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: normal;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-btn:hover {
+            font-weight: bold;
+            font-size: 16px;
+            transform: scale(1.05);
+        }
+
+        .navbar-btn:active {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <nav class="navbar">
+        <!-- Left side: Logo/Image -->
+        <div class="navbar-logo">
+            <img src="{% static 'main_page/images/VetLogo.png' %}" alt="Logo">
+        </div>
+
+        <!-- Right side: 9 Buttons -->
+        <div class="navbar-buttons">
+            <button class="navbar-btn">Home</button>
+            <button class="navbar-btn">About</button>
+            <button class="navbar-btn">Services</button>
+            <button class="navbar-btn">Portfolio</button>
+            <button class="navbar-btn">Team</button>
+            <button class="navbar-btn">Blog</button>
+            <button class="navbar-btn">Contact</button>
+            <button class="navbar-btn">Login</button>
+            <button class="navbar-btn">Sign Up</button>
+        </div>
+    </nav>
+
+    <img src="{% static 'main_page/images/ImageForVeterinary.png' %}" alt="Pets Posing" width="1000" >
+</body>
+</html>

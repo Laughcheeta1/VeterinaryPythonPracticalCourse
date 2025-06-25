@@ -37,6 +37,8 @@
     font-weight: normal;
     transition: all 0.3s ease;
     text-decoration: none;
+    font-family: 'Caprasimo', 'Comic Sans MS';
+    font-weight: 10;
 }
 
 .navbar-btn:hover {

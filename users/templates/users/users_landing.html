@@ -4,13 +4,13 @@
 {% block title %}Users{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'users/styles.css' %}">
+<link rel="stylesheet" href="{% static 'common/content_page.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="main_info">
-    <a class="option" href="{%  %}">See all users</a>
-    <a class="option">Register user</a>
-    <a class="option">Search particular user</a>
+    <a class="option" href="{% url 'all_users' %}">See all users</a>
+    <a class="option" href="{% url 'register_user' %}">Register user</a>
+    <a class="option" href="{% url 'particular_user' %}">Search particular user</a>
 </div>
 {% endblock %}

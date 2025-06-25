@@ -9,8 +9,11 @@
 
 {% block content %}
 <div class="main_info">
-    <a class="option" href="{% url 'all_users' %}">See all users</a>
-    <a class="option" href="{% url 'register_user' %}">Register user</a>
-    <a class="option" href="{% url 'particular_user' %}">Search particular user</a>
+    <img src="{% static 'users/images/WomenHoldingPet.png' %}" class="welcome_image" alt="Woman holding golder retriever">
+    <div class="options-container">
+        <a class="option" href="{% url 'all_users' %}">See all users</a>
+        <a class="option" href="{% url 'register_user' %}">Register user</a>
+        <a class="option" href="{% url 'particular_user' %}">Search particular user</a>
+    </div>
 </div>
 {% endblock %}

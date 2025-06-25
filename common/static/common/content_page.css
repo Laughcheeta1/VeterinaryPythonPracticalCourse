@@ -1,14 +1,27 @@
 .main_info {
-    margin-top: 2rem;
+    margin-top: 0;
     margin-left: 20%;
     margin-right: 20%;
     display: flex;
-    justify-content: center;   
+    flex-direction: column; 
+    justify-content: flex-start; 
     align-items: center;       
     gap: 2rem;                 
-    height: 100vh;             
+    height: calc(100vh - 80px);
     background-color: white;
     box-sizing: border-box;
+    padding-top: 3rem;
+}
+
+.welcome_image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.options-container {
+    display: flex;
+    gap: 2rem;
 }
 
 .option {

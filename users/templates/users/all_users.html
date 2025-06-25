@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Users{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'common/all_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h1>All Users</h1>
+    <div class="cards-list">
+        {% for user in users %}
+            <!-- TODO add the correct link to the single user page -->
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" class="card">
+                <span class="name">{{ user.name }}</span>
+                <span class="phone">{{ user.phone_number }}</span>
+                <span class="address">{{ user.address }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

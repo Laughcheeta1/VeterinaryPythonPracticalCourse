@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Users{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'users/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main_info">
+    <a class="option" href="{%  %}">See all users</a>
+    <a class="option">Register user</a>
+    <a class="option">Search particular user</a>
+</div>
+{% endblock %}

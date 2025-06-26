@@ -7,12 +7,14 @@ from .forms import UserForm
 def landing_page(request):
     return render(request, 'users/users_landing.html', {})
 
+
 def all_users(request):
     users = User.objects.all()
 
     context = { 'users' : users }
 
     return render(request, 'users/all_users.html', context)
+
 
 def register_user(request):
     form = UserForm()
@@ -38,8 +40,10 @@ def register_user(request):
     context = { 'form': form }
     return render(request, 'users/register_user.html', context)
 
+
 def search_user(request):
     return render(request, 'users/users_landing.html', {})
+
 
 def particular_user(request, user_id):
     desired_user = User.objects.get(pk=user_id)

@@ -1,0 +1,28 @@
+.message-container {
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+    background-color: #732d91; /* A slightly darker purple on hover */
+    transform: translateY(-2px); /* A subtle lift effect */
+}
+
+/* Add these new styles for the result page */
+.result-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin: 2rem 0;
+}
+
+/* This ensures that when the .submit-btn is a link, it looks right */
+a.submit-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}

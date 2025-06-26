@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register User{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'common/result_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="message-container">
+    <p class="result-message">{{ message }}</p>
+
+    <a href="{% url desired_url %}" class="submit-btn">Back to {{ return_page_name }}</a>
+</div>
+{% endblock %}

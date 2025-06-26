@@ -21,12 +21,19 @@ def register_user(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            print("It was succesfull")
-            # TODO: make the response be a page
-            return HttpResponse("Submission was successful")
+            context = {
+                'message': 'Registro De Usuario Exitoso',
+                'return_page_name' : 'Users',
+                'desired_url' : 'users_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
         else:
-            print("It was not succesfull")
-            return HttpResponse("unsecces")
+            context = {
+                'message': 'No fue posible registrar el usuario',
+                'return_page_name' : 'Users',
+                'desired_url' : 'users_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
 
     context = { 'form': form }
     return render(request, 'users/register_user.html', context)

@@ -4,7 +4,7 @@ from django.core.validators import MinLengthValidator
 # Create your models here.
 class User(models.Model):
     name = models.CharField(
-        max_length=20,
+        max_length=30,
         validators=[MinLengthValidator(1)]
         )
     phone_number = models.CharField(

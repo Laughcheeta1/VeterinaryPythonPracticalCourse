@@ -46,9 +46,9 @@ def search_user(request):
 
 
 def particular_user(request, user_id):
-    desired_user = User.objects.get(pk=user_id)
-
-    if desired_user == None:
+    try:
+        desired_user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
         context = {
             'message': 'the desired user does not exits',
             'return_page_name': 'home page',

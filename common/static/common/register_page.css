@@ -1,9 +1,96 @@
 .register-container {
-    width: 80%;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+.register-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Style all input types from the form */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box; /* Important for padding and width */
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #b39ddb; /* A nice purple to match the theme */
+    box-shadow: 0 0 0 3px rgba(179, 157, 219, 0.25);
+}
+
+.error-text {
+    color: #d9534f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.submit-btn {
+    padding: 0.9rem 1.5rem;
+    background-color: #8e44ad; /* A stronger purple for the button */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #732d91;
+}
+
+.submit-btn {
+    padding: 0.9rem 1.5rem;
+    background-color: #8e44ad; /* A strong, modern purple */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-top: 1rem; /* Adds space above the button */
+    width: 100%; /* Makes the button full-width */
+}
+
+.submit-btn:hover {
+    background-color: #732d91; /* A slightly darker purple on hover */
+    transform: translateY(-2px); /* A subtle lift effect */
+}

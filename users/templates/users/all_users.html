@@ -12,8 +12,7 @@
     <h1>All Users</h1>
     <div class="cards-list">
         {% for user in users %}
-            <!-- TODO add the correct link to the single user page -->
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" class="card">
+            <a href="{% url 'particular_user' user.id %}" class="card">
                 <span class="name">{{ user.name }}</span>
                 <span class="phone">{{ user.phone_number }}</span>
                 <span class="address">{{ user.address }}</span>

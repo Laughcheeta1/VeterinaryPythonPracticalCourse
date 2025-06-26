@@ -41,5 +41,19 @@ def register_user(request):
 def search_user(request):
     return render(request, 'users/users_landing.html', {})
 
-def particular_user(request):
-    return render(request, 'users/users_landing.html', {})
+def particular_user(request, user_id):
+    desired_user = User.objects.get(pk=user_id)
+
+    if desired_user == None:
+        context = {
+            'message': 'the desired user does not exits',
+            'return_page_name': 'home page',
+            'desired_url': 'main_page'
+        }
+        return render(request, 'common/result_page.html', context)
+
+    context = {
+        'user': desired_user
+    }
+
+    return render(request, 'users/particular_user_page.html', context)

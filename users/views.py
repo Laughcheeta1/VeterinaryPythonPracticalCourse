@@ -78,10 +78,11 @@ def edit_user(request, user_id):
     form = UserForm(instance=desired_user)
 
     context = { 
+        'page_name' : 'Edit User',
+        'object': desired_user,
         'form': form,
-        'user': desired_user
     }
-    return render(request, 'users/edit_user.html', context)
+    return render(request, 'common/edit.html', context)
 
 
 def search_user(request):

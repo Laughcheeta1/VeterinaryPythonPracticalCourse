@@ -48,11 +48,7 @@
     text-overflow: ellipsis;
 }
 
-.name {
+.item {
     font-weight: bold;
     color: #4a4a4a;
-}
-
-.phone, .user-address {
-    color: #7a7a7a;
 }

@@ -11,9 +11,13 @@ def landing_page(request):
 def all_users(request):
     users = User.objects.all()
 
-    context = { 'users' : users }
+    context = { 
+        'objects' : users,
+        'page_name' : 'All Users',
+        'base_url' : 'particular_user'
+    }
 
-    return render(request, 'users/all_users.html', context)
+    return render(request, 'common/all.html', context)
 
 
 def register_user(request):

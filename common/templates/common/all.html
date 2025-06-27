@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_name }}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'common/all_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h1>{{ page_name }}</h1>
+    <div class="cards-list">
+        {% for object in objects %}
+            <a href="{% url base_url object.id %}" class="card">
+                {% for attribute in object.to_list %}
+                    <span class="item">{{ attribute }}</span>
+                {% endfor %}
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

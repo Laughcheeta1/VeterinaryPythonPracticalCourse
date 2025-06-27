@@ -18,3 +18,6 @@ class User(models.Model):
     
     def __str__(self):
         return self.name + ", " + self.phone_number
+    
+    def to_list(self):
+        return [self.name, self.phone_number, self.address]

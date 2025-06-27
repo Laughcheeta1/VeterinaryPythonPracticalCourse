@@ -4,8 +4,11 @@
 {% block title %}Register User{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'common/object_page.css' %}">
+<link rel="stylesheet" href="{% static 'common/particular_object_page.css' %}">
 {% endblock %}
+
+
+{% block content %}
 <div class="object-container">
     <h1>User {{ user.name }}</h1>
     <div class="object-group">
@@ -14,6 +17,7 @@
     <div class="object-group">
         {{ user.address }}
     </div>
+    <a href="{% url 'main_page' %}">Edit</a><br>
+    <a href="{% url 'main_page' %}">Go to main page</a>
 </div>
-{% block content %}
 {% endblock %}

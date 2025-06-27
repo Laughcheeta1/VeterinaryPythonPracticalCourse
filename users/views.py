@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import User
 from .forms import UserForm
 
@@ -61,7 +60,7 @@ def edit_user(request, user_id):
         desired_user = User.objects.get(pk=user_id)
     except User.DoesNotExist:
         context = {
-            'message': 'the desired user does not exits',
+            'message': 'the desired user does not exist',
             'return_page_name': 'home page',
             'desired_url': 'main_page'
         }
@@ -113,11 +112,6 @@ def delete_user(request, user_id):
         'desired_url' : 'users_landing_page'
     }
     return render(request, 'common/result_page.html', context)
-
-
-def search_user(request):
-    return render(request, 'users/users_landing.html', {})
-
 
 def particular_user(request, user_id):
     try:

@@ -11,9 +11,9 @@
 {% block content %}
 <div class="object-container">
     <h1>{{ page_name }}</h1>
-    {% for attribute in object.to_list %}
+    {% for key, attribute in object.to_dict.items %}
         <div class="object-group">
-            {{ attribute }}
+            {{ key }}: {{ attribute }}
         </div>
     {% endfor %}
     <a href="{% url edit_url object.id %}">Edit</a><br>

@@ -18,3 +18,12 @@ class Pet(models.Model):
         validators=[MinLengthValidator(1)]
         )
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'birthday': self.birthday,
+            'species': self.species,
+            'race': self.race,
+            'owner': self.owner,
+        }

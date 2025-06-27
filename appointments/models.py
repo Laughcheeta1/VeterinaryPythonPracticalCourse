@@ -15,3 +15,6 @@ class Appointment(models.Model):
             "diagnosis": self.diagnosis,
             "pet": self.pet,
         }
+    
+    def __str__(self):
+        return str(self.pet) + ", " + self.motive

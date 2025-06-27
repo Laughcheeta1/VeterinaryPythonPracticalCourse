@@ -17,7 +17,7 @@ class User(models.Model):
         )
     
     def __str__(self):
-        return self.name + ", " + self.phone_number
+        return self.name
     
     def to_dict(self):
         return { 

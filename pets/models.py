@@ -27,3 +27,7 @@ class Pet(models.Model):
             'race': self.race,
             'owner': self.owner,
         }
+    
+    
+    def __str__(self):
+        return self.name

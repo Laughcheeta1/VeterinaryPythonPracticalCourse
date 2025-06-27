@@ -4,19 +4,27 @@
 {% block title %}{{ page_name }}{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'common/particular_object_page.css' %}">
+<link rel="stylesheet" href="{% static 'common/register_page.css' %}">
 {% endblock %}
 
-
 {% block content %}
-<div class="object-container">
+<div class="register-container">
     <h1>{{ page_name }}</h1>
-    {% for key, attribute in object.to_dict.items %}
-        <div class="object-group">
-            {{ key }}: {{ attribute }}
-        </div>
-    {% endfor %}
-    <a href="{% url edit_url object.id %}">Edit</a><br>
-    <a href="{% url 'main_page' %}">Go to main page</a>
+    <div class="user-form">
+        {% for key, attribute in object.to_dict.items %}
+            <div class="form-group">
+                <label><strong>{{ key|capfirst }}:</strong></label>
+                <div>{{ attribute }}</div>
+            </div>
+        {% endfor %}
+        <a href="{% url edit_url object.id %}" class="submit-btn" style="margin-top: 2rem;">Edit</a>
+        <a href="{% url 'main_page' %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Go to main page</a>
+        <form action="{% url delete_url object.id %}" method="GET" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="submit-btn" style="margin-top: 1rem; background-color: red;">
+                Delete
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}

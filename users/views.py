@@ -84,7 +84,6 @@ def edit_user(request, user_id):
                 'desired_url' : 'users_landing_page'
             }
             return render(request, 'common/result_page.html', context)
-        
     
     form = UserForm(instance=desired_user)
 
@@ -94,6 +93,26 @@ def edit_user(request, user_id):
         'form': form,
     }
     return render(request, 'common/edit.html', context)
+
+
+def delete_user(request, user_id):
+    try:
+        desired_user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        context = {
+            'message': 'the desired user does not exits',
+            'return_page_name': 'home page',
+            'desired_url': 'main_page'
+        }
+        return render(request, 'common/result_page.html', context)
+    
+    desired_user.delete()
+    context = {
+        'message': 'El usuario fue eliminado exitosamente',
+        'return_page_name' : 'Users',
+        'desired_url' : 'users_landing_page'
+    }
+    return render(request, 'common/result_page.html', context)
 
 
 def search_user(request):
@@ -115,6 +134,7 @@ def particular_user(request, user_id):
         'page_name' : 'User',
         'object': desired_user,
         'edit_url' : 'edit_user',
+        'delete_url' : 'delete_user',
     }
 
     return render(request, 'common/particular.html', context)

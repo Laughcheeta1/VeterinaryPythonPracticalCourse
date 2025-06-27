@@ -15,7 +15,7 @@ def landing_page(request):
     return render(request, 'common/landing.html', context)
 
 
-def all_users(request):
+def all_pets(request):
     pets = Pet.objects.all()
 
     context = { 
@@ -27,7 +27,7 @@ def all_users(request):
     return render(request, 'common/all.html', context)
 
 
-def register_user(request):
+def register_pet(request):
     form = PetForm()
 
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def register_user(request):
     return render(request, 'common/register.html', context)
 
 
-def edit_user(request, pet_id):
+def edit_pet(request, pet_id):
     try:
         desired_pet = Pet.objects.get(pk=pet_id)
     except Pet.DoesNotExist:
@@ -87,14 +87,14 @@ def edit_user(request, pet_id):
     form = PetForm(instance=desired_pet)
 
     context = { 
-        'page_name' : 'Edit User',
+        'page_name' : 'Edit Pet',
         'object': desired_pet,
         'form': form,
     }
     return render(request, 'common/edit.html', context)
 
 
-def delete_user(request, pet_id):
+def delete_pet(request, pet_id):
     try:
         desired_pet = Pet.objects.get(pk=pet_id)
     except Pet.DoesNotExist:
@@ -114,7 +114,7 @@ def delete_user(request, pet_id):
     return render(request, 'common/result_page.html', context)
 
 
-def particular_user(request, pet_id):
+def particular_pet(request, pet_id):
     try:
         desired_pet = Pet.objects.get(pk=pet_id)
     except Pet.DoesNotExist:

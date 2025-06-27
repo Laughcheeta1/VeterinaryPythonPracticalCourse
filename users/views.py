@@ -41,8 +41,11 @@ def register_user(request):
             }
             return render(request, 'common/result_page.html', context)
 
-    context = { 'form': form }
-    return render(request, 'users/register_user.html', context)
+    context = { 
+        'form': form,
+        'page_name' : 'Register User'
+    }
+    return render(request, 'common/register.html', context)
 
 
 def edit_user(request, user_id):

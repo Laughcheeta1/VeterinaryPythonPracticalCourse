@@ -22,7 +22,7 @@ class Pet(models.Model):
     def to_dict(self):
         return {
             'name': self.name,
-            'birthday': self.birthday.isoformat(),
+            'birthday': self.birthday,
             'species': self.species,
             'race': self.race,
             'owner': self.owner,

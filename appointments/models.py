@@ -10,7 +10,7 @@ class Appointment(models.Model):
 
     def to_dict(self):
         return {
-            "date": self.date.isoformat(),
+            "date": self.date,
             "motive": self.motive,
             "diagnosis": self.diagnosis,
             "pet": self.pet,

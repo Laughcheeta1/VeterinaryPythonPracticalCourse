@@ -67,18 +67,18 @@ def edit_pet(request, pet_id):
         return render(request, 'common/result_page.html', context)
 
     if request.method == 'POST':
-        form = PetForm(request.POST)
+        form = PetForm(request.POST, instance=desired_pet)
         if form.is_valid():
             form.save()
             context = {
-                'message': 'Registro De Mascota Exitoso',
+                'message': 'Actualizacion De Mascota Exitoso',
                 'return_page_name' : 'Mascotas',
                 'desired_url' : 'pets_landing_page'
             }
             return render(request, 'common/result_page.html', context)
         else:
             context = {
-                'message': 'No fue posible registrar la mascota',
+                'message': 'No fue posible actualizar la mascota',
                 'return_page_name' : 'Pets',
                 'desired_url' : 'pets_landing_page'
             }

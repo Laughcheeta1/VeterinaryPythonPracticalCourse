@@ -67,18 +67,18 @@ def edit_user(request, user_id):
         return render(request, 'common/result_page.html', context)
 
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = UserForm(request.POST, instance=desired_user)
         if form.is_valid():
             form.save()
             context = {
-                'message': 'Registro De Usuario Exitoso',
+                'message': 'Actualizacion De Usuario Exitoso',
                 'return_page_name' : 'Users',
                 'desired_url' : 'users_landing_page'
             }
             return render(request, 'common/result_page.html', context)
         else:
             context = {
-                'message': 'No fue posible registrar el usuario',
+                'message': 'No fue posible actualizar el usuario',
                 'return_page_name' : 'Users',
                 'desired_url' : 'users_landing_page'
             }

@@ -7,3 +7,11 @@ class Appointment(models.Model):
     motive = models.CharField(max_length=250)
     diagnosis = models.CharField(max_length=1000)
     pet = models.ForeignKey(Pet, on_delete=models.SET_NULL, null=True)
+
+    def to_dict(self):
+        return {
+            "date": self.date.isoformat(),
+            "motive": self.motive,
+            "diagnosis": self.diagnosis,
+            "pet": self.pet,
+        }

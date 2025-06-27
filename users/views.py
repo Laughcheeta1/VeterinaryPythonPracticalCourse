@@ -5,7 +5,15 @@ from .forms import UserForm
 
 # Create your views here.
 def landing_page(request):
-    return render(request, 'users/users_landing.html', {})
+    context = {
+        'page_name' : 'Users',
+	    'object_name' : 'user',
+	    'all_url' : 'all_users',
+	    'register_url' : 'register_user',
+	    'desired_image_url' : 'users/images/WomenHoldingPet.png',
+	    'image_alt_name' :  'Woman holding golder retriever',
+    }
+    return render(request, 'common/landing.html', context)
 
 
 def all_users(request):

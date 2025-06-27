@@ -101,7 +101,9 @@ def particular_user(request, user_id):
         return render(request, 'common/result_page.html', context)
 
     context = {
-        'user': desired_user
+        'page_name' : 'User',
+        'object': desired_user,
+        'edit_url' : 'edit_user',
     }
 
-    return render(request, 'users/particular_user_page.html', context)
+    return render(request, 'common/particular.html', context)

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_name }}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'common/particular_object_page.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="object-container">
+    <h1>{{ page_name }}</h1>
+    {% for attribute in object.to_list %}
+        <div class="object-group">
+            {{ attribute }}
+        </div>
+    {% endfor %}
+    <a href="{% url edit_url object.id %}">Edit</a><br>
+    <a href="{% url 'main_page' %}">Go to main page</a>
+</div>
+{% endblock %}

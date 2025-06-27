@@ -17,7 +17,7 @@
     <div class="object-group">
         {{ user.address }}
     </div>
-    <a href="{% url 'main_page' %}">Edit</a><br>
+    <a href="{% url 'edit_user' user.id %}">Edit</a><br>
     <a href="{% url 'main_page' %}">Go to main page</a>
 </div>
 {% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register User{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'common/edit_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="edit-container">
+    <h1>Edit User: {{ user.name }}</h1>
+    
+    <form method="POST" class="user-form">
+        {% csrf_token %}
+        
+        {# This loop will render the form fields with the user's data already in them #}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <p class="error-text">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="submit-btn">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -41,6 +41,45 @@ def register_user(request):
     return render(request, 'users/register_user.html', context)
 
 
+def edit_user(request, user_id):
+    try:
+        desired_user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        context = {
+            'message': 'the desired user does not exits',
+            'return_page_name': 'home page',
+            'desired_url': 'main_page'
+        }
+        return render(request, 'common/result_page.html', context)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            context = {
+                'message': 'Registro De Usuario Exitoso',
+                'return_page_name' : 'Users',
+                'desired_url' : 'users_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
+        else:
+            context = {
+                'message': 'No fue posible registrar el usuario',
+                'return_page_name' : 'Users',
+                'desired_url' : 'users_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
+        
+    
+    form = UserForm(instance=desired_user)
+
+    context = { 
+        'form': form,
+        'user': desired_user
+    }
+    return render(request, 'users/edit_user.html', context)
+
+
 def search_user(request):
     return render(request, 'users/users_landing.html', {})
 

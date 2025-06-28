@@ -13,3 +13,7 @@ def verify_date(fecha):
     result = regex.match(fecha)
     if result is None:
         raise ValidationError('The provided date is not in the required format (dd/mm/yyyy)')
+
+def validate_surgeon(vet):
+    if vet.specialty.name != "surgeon":
+        raise ValidationError('The provided veterinarian is not a surgeon')

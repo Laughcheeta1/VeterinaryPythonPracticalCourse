@@ -1,5 +1,7 @@
 from django.db import models
 from pets.models import Pet
+from veterinarians.models import Veterinarian
+from common.validator import validate_surgeon
 
 class Surgery_Type(models.Model):
     name = models.CharField()
@@ -15,12 +17,17 @@ class Surgery_Type(models.Model):
 
 class Surgery(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.SET_NULL, null=True)
-    date = models.DateTimeField()
-    surgeon = models.CharField()
     type = models.ForeignKey(Surgery_Type, on_delete=models.SET_NULL, null=True)
+    date = models.DateTimeField()
+    surgeon = models.ForeignKey(
+        Veterinarian, 
+        on_delete=models.SET_NULL,
+        null=True,
+        validators=[validate_surgeon],
+        )
 
     def __str__(self):
-        return self.surgeon + " on " + str(self.pet)
+        return str(self.surgeon) + " on " + str(self.pet)
     
     def to_dict(self):
         return {

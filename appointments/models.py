@@ -20,3 +20,12 @@ class Appointment(models.Model):
     
     def __str__(self):
         return str(self.pet) + ", " + self.motive
+
+
+class Annotation_Appointment(models.Model):
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    annotation = models.CharField()
+
+    def __str__(self):
+        return str(Appointment) + self.annotation[0: 10]  # Get only the first 10 characters of the annotation
+

@@ -27,5 +27,5 @@ class Annotation_Appointment(models.Model):
     annotation = models.CharField()
 
     def __str__(self):
-        return str(Appointment) + self.annotation[0: 10]  # Get only the first 10 characters of the annotation
+        return str(self.appointment) + self.annotation[0: 10]  # Get only the first 10 characters of the annotation
 

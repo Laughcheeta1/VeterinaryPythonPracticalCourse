@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'surgeries',
     'medications',
     'medic_history',
-    'annotations_appointment',
     'veterinarians',
 ]
 

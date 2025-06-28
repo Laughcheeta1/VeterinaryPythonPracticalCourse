@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinLengthValidator
 from datetime import date
 import common.validator as custom_validations
+from datetime import date
 
 # Create your models here.
 class User(models.Model):
@@ -18,7 +19,8 @@ class User(models.Model):
         validators=[MinLengthValidator(1)]
         )
     birth_day = models.DateField(
-        validators=[custom_validations.verify_date]
+        validators=[custom_validations.verify_date],
+        default = date.today,
     )
     
     @property

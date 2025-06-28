@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'medications',
     'medic_history',
     'annotations_appointment',
+    'veterinarians',
 ]
 
 MIDDLEWARE = [

@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'users',
     'appointments',
     'common',
+    'surgeries',
+    'medications',
+    'medic_history',
+    'annotations_appointment',
 ]
 
 MIDDLEWARE = [

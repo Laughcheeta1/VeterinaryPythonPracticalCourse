@@ -2,6 +2,7 @@ from django.db import models
 from pets.models import Pet
 from veterinarians.models import Veterinarian
 from common.validator import validate_surgeon
+from appointments.models import Annotation_Appointment
 
 class Surgery_Type(models.Model):
     name = models.CharField()
@@ -36,3 +37,11 @@ class Surgery(models.Model):
             'surgeon': self.surgeon,
             'type': self.type
         }
+    
+
+class Surgeries_Sent(models.Model):
+    annotation_appointment = models.ForeignKey(Annotation_Appointment, on_delete=models.CASCADE)
+    surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.surgery)

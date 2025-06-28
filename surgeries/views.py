@@ -9,8 +9,8 @@ def landing_page(request):
 	    'object_name' : 'surgery',
 	    'all_url' : 'all_surgeries',
 	    'register_url' : 'register_surgery',
-	    'desired_image_url' : 'surgeries/images/WomenHoldingPet.png',
-	    'image_alt_name' :  'Woman holding golder retriever',
+	    'desired_image_url' : '',
+	    'image_alt_name' :  '',
     }
     return render(request, 'common/landing.html', context)
 

@@ -6,6 +6,9 @@ import common.validator as custom_validations
 class Veterinarian_Specialties(models.Model):
     name = models.CharField()
 
+    def __str__(self):
+        return self.name
+
 
 class Veterinarian(models.Model):
     name = models.CharField()
@@ -15,4 +18,7 @@ class Veterinarian(models.Model):
         )
     license_number = models.CharField()
     specialty = models.ForeignKey(Veterinarian_Specialties, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.name
     

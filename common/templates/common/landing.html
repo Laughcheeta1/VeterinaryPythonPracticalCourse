@@ -11,8 +11,16 @@
 <div class="main_info">
     <img src="{% static desired_image_url %}" class="welcome_image" alt="{{ image_alt_name }}">
     <div class="options-container">
-        <a class="option" href="{% url all_url %}">See all {{ object_name }}s</a>
         <a class="option" href="{% url register_url %}">Register {{ object_name }}</a>
+    </div>
+    <div class="cards-list">
+        {% for object in objects %}
+            <a href="{% url base_url object.id %}" class="card">
+                {% for attribute in object.to_dict.values %}
+                    <span class="item">{{ attribute }}</span>
+                {% endfor %}
+            </a>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

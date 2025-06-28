@@ -19,8 +19,7 @@ class User(models.Model):
         validators=[MinLengthValidator(1)]
         )
     birth_day = models.DateField(
-        validators=[custom_validations.verify_date],
-        default = date.today,
+        validators=[],
     )
     
     @property

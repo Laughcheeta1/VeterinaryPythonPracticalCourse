@@ -25,10 +25,25 @@
     flex-direction: column;
 }
 
-.form-group label {
+.form-group label {.form-group
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #555;
+}
+
+.form-groupinput[type="datetime-local"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.form-group input[type="datetime-local"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 /* Style all input types from the form */

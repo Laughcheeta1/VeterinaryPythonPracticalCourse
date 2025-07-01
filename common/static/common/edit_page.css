@@ -94,3 +94,32 @@
     background-color: #732d91; /* A slightly darker purple on hover */
     transform: translateY(-2px); /* A subtle lift effect */
 }
+
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #faf7ff;
+    color: #333;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input[type="date"]:focus {
+    outline: none;
+    border-color: #b39ddb;
+    box-shadow: 0 0 0 3px rgba(179, 157, 219, 0.25);
+}
+
+/* Remove default calendar icon and style a custom one for Chrome */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(40%) sepia(30%) saturate(400%) hue-rotate(240deg);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.form-group input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}

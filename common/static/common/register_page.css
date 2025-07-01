@@ -31,6 +31,35 @@
     color: #555;
 }
 
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #faf7ff;
+    color: #333;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input[type="date"]:focus {
+    outline: none;
+    border-color: #b39ddb;
+    box-shadow: 0 0 0 3px rgba(179, 157, 219, 0.25);
+}
+
+/* Remove default calendar icon and style a custom one for Chrome */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(40%) sepia(30%) saturate(400%) hue-rotate(240deg);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.form-group input[type="date"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
 /* Style all input types from the form */
 .form-group input[type="text"],
 .form-group input[type="email"],
@@ -59,22 +88,6 @@
     margin-top: 0.25rem;
 }
 
-.submit-btn {
-    padding: 0.9rem 1.5rem;
-    background-color: #8e44ad; /* A stronger purple for the button */
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 1rem;
-}
-
-.submit-btn:hover {
-    background-color: #732d91;
-}
 
 .submit-btn {
     padding: 0.9rem 1.5rem;

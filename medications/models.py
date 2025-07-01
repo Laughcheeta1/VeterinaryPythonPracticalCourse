@@ -10,6 +10,19 @@ class Medications(models.Model):
     def __str__(self):
         return self.name
     
+    def basic_info(self):
+         return {
+            "Nombre": self.name,
+            "Fabricante": self.manufacturer,
+        }
+
+    def complete_info(self):
+        return {
+            "Nombre": self.name,
+            "Fabricante": self.manufacturer,
+            "Descripcion": self.description,
+        }
+    
 
 class Medications_Sent(models.Model):
     annotation_appointment = models.ForeignKey(Annotation_Appointment, on_delete=models.CASCADE)

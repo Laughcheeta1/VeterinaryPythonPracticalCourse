@@ -11,7 +11,7 @@
 <div class="register-container">
     <h1>{{ page_name }}</h1>
     <div class="user-form">
-        {% for key, attribute in object.to_dict.items %}
+        {% for key, attribute in object.complete_info.items %}
             <div class="form-group">
                 <label><strong>{{ key|capfirst }}:</strong></label>
                 <div>{{ attribute }}</div>

@@ -30,7 +30,13 @@ class Surgery(models.Model):
     def __str__(self):
         return str(self.surgeon) + " on " + str(self.pet)
     
-    def to_dict(self):
+    def basic_info(self):
+        return {
+            'pet': self.pet,
+            'type': self.type
+        }
+
+    def complete_info(self):
         return {
             'pet': self.pet,
             'date': self.date,

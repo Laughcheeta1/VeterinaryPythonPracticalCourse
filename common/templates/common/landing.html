@@ -16,7 +16,7 @@
     <div class="cards-list">
         {% for object in objects %}
             <a href="{% url base_url object.id %}" class="card">
-                {% for attribute in object.to_dict.values %}
+                {% for attribute in object.basic_info.values %}
                     <span class="item">{{ attribute }}</span>
                 {% endfor %}
             </a>

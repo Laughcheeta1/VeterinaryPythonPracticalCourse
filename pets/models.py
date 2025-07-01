@@ -26,8 +26,14 @@ class Pet(models.Model):
     def age(self):
         today = date.today()
         return today.year - self.birthday.year - ((today.month, today.day) < (self.birthday.month, self.birthday.day))        
+    
+    def basic_info(self):
+        return {
+            'Nombre': self.name,
+            'Dueño': self.owner,
+        }
 
-    def to_dict(self):
+    def complete_info(self):
         return {
             'Nombre': self.name,
             'Fecha de nacimiento': self.birthday,

@@ -30,7 +30,13 @@ class User(models.Model):
     def __str__(self):
         return self.name
     
-    def to_dict(self):
+    def basic_info(self):
+        return { 
+            'Nombre': self.name, 
+            'Numero de celular': self.phone_number, 
+        }
+
+    def complete_info(self):
         return { 
             'Nombre': self.name, 
             'Numero de celular': self.phone_number, 

@@ -22,3 +22,17 @@ class Veterinarian(models.Model):
     def __str__(self):
         return self.name
     
+    def basic_info(self):
+        return {
+            'name': self.name,
+            'specialty': self.specialty,
+        }
+
+    def complete_info(self):
+        return {
+            'name': self.name,
+            'phone_number': self.phone_number,
+            'license_number': self.license_number,
+            'specialty': self.specialty,
+        }
+    

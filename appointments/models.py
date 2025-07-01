@@ -8,11 +8,17 @@ class Appointment(models.Model):
     motive = models.CharField(max_length=250)
     date = models.DateTimeField()
     diagnosis = models.CharField(max_length=1000)
-    veterinarian = models.ForeignKey(Veterinarian, on_delete=models.SET_NULL, null=True)
-
-    def to_dict(self):
+    veterinarian = models.ForeignKey(Veterinarian, on_delete=models.SET_NULL, null=True)        
+    
+    def basic_info(self):
         return {
-            "Fecha de nacimiento": self.date,
+            "Fecha": self.date,
+            "Mascota": self.pet,
+        }
+
+    def complete_info(self):
+        return {
+            "Fecha": self.date,
             "Motivo": self.motive,
             "Diagnosis": self.diagnosis,
             "Mascota": self.pet,

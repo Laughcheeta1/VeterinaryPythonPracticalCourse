@@ -77,12 +77,11 @@
 }
 
 .card span {
-    flex-basis: 33%; /* Each item takes up roughly a third of the space */
+    flex: 1;
+    min-width: 0;
     padding: 0 1rem;
     text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal; /* Allow text to wrap */
 }
 
 .item {

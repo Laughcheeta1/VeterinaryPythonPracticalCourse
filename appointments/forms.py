@@ -9,9 +9,21 @@ class AppointmentForm(forms.ModelForm):
             'min': self._get_date_appointment(),
         })
 
+    """
+    Return the minimum date for the select datetime in the html form.
+
+    That is, if the appointment is being registered before work hours, then make the minimum hour at the work ours.
+    If the appointment is being registered after work hours, then make the minimum hour at work hours next day
+    """
     def _get_date_appointment(self):
-        """Return the minimum date for the select datetime in the html form"""
-        pass  # TODO
+        now = datetime.now()
+        start_hour = datetime(now.year, now.month, now.day, 9, 0, 0)
+        
+        if now < start_hour:
+            return start_hour.strftime('%Y-%m-%dT%H:%M')
+        
+        last_turn = datetime(now.year, now.month, now.day, 17, 30, 0)
+        return self._get_next_30_min_interval() if now < last_turn else (start_hour + timedelta(days=1)).strftime('%Y-%m-%dT%H:%M')
     
     def _get_next_30_min_interval(self):
         """Round datetime up to the nearest 30-minute interval"""

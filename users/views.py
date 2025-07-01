@@ -118,6 +118,7 @@ def delete_user(request, user_id):
     }
     return render(request, 'common/result_page.html', context)
 
+
 def particular_user(request, user_id):
     try:
         desired_user = User.objects.get(pk=user_id)

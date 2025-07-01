@@ -32,7 +32,9 @@ class User(models.Model):
     
     def to_dict(self):
         return { 
-            'name' : self.name, 
-            'phone number' : self.phone_number, 
-            'address' : self.address,
+            'Nombre': self.name, 
+            'Numero de celular': self.phone_number, 
+            'Direccion': self.address,
+            'Edad': self.age,
+            'Fecha de nacimiento': self.birth_day,
         }

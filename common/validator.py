@@ -2,7 +2,8 @@ import re
 from django.core.exceptions import ValidationError
 
 def verify_number(numero):
-    regex = re.compile(r"^\+?\d{0,3}\d{10}$") #^matches the start of the line, with \ we scape the special + and whe put a ? to say it's optional that tell us it should begin with 0 to three characters and then the 10 digits with $ to end the string
+    regex = re.compile(r"^\+?\d{0,3} ?\d{3} ?\d{3} ?\d{4}$") #^matches the start of the line, with \ we scape the special + and whe put a ? to say it's optional that tell us it should begin with 0 to three characters and then the 10 digits with $ to end the string
+    # The ' ?' is telling that there might be a white space
     result = regex.match(numero)
     if result is None:
         raise ValidationError('The provided phone_number is not valid')

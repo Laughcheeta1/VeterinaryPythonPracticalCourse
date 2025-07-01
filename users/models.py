@@ -11,7 +11,7 @@ class User(models.Model):
         validators=[MinLengthValidator(1)]
         )
     phone_number = models.CharField(
-        max_length=14, 
+        max_length=17, 
         validators=[MinLengthValidator(10), custom_validations.verify_number]
         )
     address = models.CharField(

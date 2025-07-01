@@ -16,8 +16,7 @@ def landing_page(request):
         'objects' : users,
         'base_url' : 'particular_user',
     }
-
-    print(context)
+    
     return render(request, 'common/landing.html', context)
 
 

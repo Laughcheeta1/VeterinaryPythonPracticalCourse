@@ -56,3 +56,10 @@ class AppointmentForm(forms.ModelForm):
         help_texts = {
             'phone_number': 'Puedes ingresar tu numero de celular con o sin el codigo del pais'
         }
+        labels = {
+            'pet': 'Mascota',
+            'motive': 'Motivo',
+            'date': 'Fecha y hora',
+            'diagnosis': 'Diagnosis',
+            'veterinarian': 'Veterinario',
+        }

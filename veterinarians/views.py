@@ -11,8 +11,8 @@ def landing_page(request):
 	    'object_name' : 'veterinarian',
 	    'all_url' : 'all_veterinarians',
 	    'register_url' : 'register_veterinarian',
-	    'desired_image_url' : 'veterinarians/images/WomenHoldingPet.png',
-	    'image_alt_name' :  'Woman holding golder retriever',
+	    'desired_image_url' : 'veterinarians/images/veterinarians.png',
+	    'image_alt_name' :  'Group of veterinaries posing',
         'objects' : veterinarians,
         'base_url' : 'particular_veterinarian',
     }

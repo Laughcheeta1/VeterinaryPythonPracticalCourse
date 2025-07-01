@@ -2,7 +2,6 @@ from django.db import models
 from users.models import User
 from django.core.validators import MinLengthValidator
 from datetime import date
-import common.validator as custom_validations
 
 # Create your models here.
 class Pet(models.Model):
@@ -11,7 +10,7 @@ class Pet(models.Model):
         validators=[MinLengthValidator(1)]
         )
     birthday = models.DateField(
-        validators=[custom_validations.verify_date]
+        validators=[]
     )
     species = models.CharField(
         max_length=20,

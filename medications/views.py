@@ -11,8 +11,8 @@ def landing_page(request):
 	    'object_name' : 'medication',
 	    'all_url' : 'all_medications',
 	    'register_url' : 'register_medication',
-	    'desired_image_url' : 'medications/images/WomenHoldingPet.png',
-	    'image_alt_name' :  'Woman holding golder retriever',
+	    'desired_image_url' : 'medications/images/medicines.png',
+	    'image_alt_name' :  'Veterinarian grabbing medicines',
         'objects' : medications,
         'base_url' : 'particular_medication',
     }

@@ -9,8 +9,8 @@ def landing_page(request):
 	    'object_name' : 'appointment',
 	    'all_url' : 'all_appointments',
 	    'register_url' : 'register_appointment',
-	    'desired_image_url' : '',
-	    'image_alt_name' :  '',
+	    'desired_image_url' : 'appointments/images/vet_examining.png',
+	    'image_alt_name' :  'Vet examining cat',
     }
     return render(request, 'common/landing.html', context)
 

@@ -9,8 +9,8 @@ def landing_page(request):
 	    'object_name' : 'pet',
 	    'all_url' : 'all_pets',
 	    'register_url' : 'register_pet',
-	    'desired_image_url' : '',
-	    'image_alt_name' :  '',
+	    'desired_image_url' : 'pets/images/cute_pet.png',
+	    'image_alt_name' :  'Cute pet in tiger costume',
     }
     return render(request, 'common/landing.html', context)
 

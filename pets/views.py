@@ -4,6 +4,8 @@ from .forms import PetForm
 
 # Create your views here.
 def landing_page(request):
+    pets = Pet.objects.all()
+
     context = {
         'page_name' : 'Pets',
 	    'object_name' : 'pet',
@@ -11,6 +13,8 @@ def landing_page(request):
 	    'register_url' : 'register_pet',
 	    'desired_image_url' : 'pets/images/cute_pet.png',
 	    'image_alt_name' :  'Cute pet in tiger costume',
+        'objects': pets,
+        'base_url': 'particular_pet'
     }
     return render(request, 'common/landing.html', context)
 

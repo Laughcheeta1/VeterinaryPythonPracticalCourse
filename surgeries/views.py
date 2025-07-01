@@ -4,6 +4,8 @@ from .forms import SurgeryForm
 
 # Create your views here.
 def landing_page(request):
+    surgeries = Surgery.objects.all()
+
     context = {
         'page_name' : 'Surgeries',
 	    'object_name' : 'surgery',
@@ -11,6 +13,8 @@ def landing_page(request):
 	    'register_url' : 'register_surgery',
 	    'desired_image_url' : 'surgeries/images/surgeon.png',
 	    'image_alt_name' :  'Surgeon',
+        'objects' : surgeries,
+        'base_url' : 'particular_surgery',
     }
     return render(request, 'common/landing.html', context)
 

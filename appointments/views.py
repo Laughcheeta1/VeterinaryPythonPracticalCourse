@@ -4,6 +4,8 @@ from .forms import AppointmentForm
 
 # Create your views here.
 def landing_page(request):
+    appointments = Appointment.objects.all()
+
     context = {
         'page_name' : 'Appointments',
 	    'object_name' : 'appointment',
@@ -11,6 +13,8 @@ def landing_page(request):
 	    'register_url' : 'register_appointment',
 	    'desired_image_url' : 'appointments/images/vet_examining.png',
 	    'image_alt_name' :  'Vet examining cat',
+        'objects' : appointments,
+        'base_url' : 'particular_appointment',
     }
     return render(request, 'common/landing.html', context)
 

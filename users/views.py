@@ -14,7 +14,10 @@ def landing_page(request):
 	    'desired_image_url' : 'users/images/WomenHoldingPet.png',
 	    'image_alt_name' :  'Woman holding golder retriever',
         'objects' : users,
+        'base_url' : 'particular_user',
     }
+
+    print(context)
     return render(request, 'common/landing.html', context)
 
 

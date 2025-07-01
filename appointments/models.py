@@ -12,10 +12,11 @@ class Appointment(models.Model):
 
     def to_dict(self):
         return {
-            "date": self.date,
-            "motive": self.motive,
-            "diagnosis": self.diagnosis,
-            "pet": self.pet,
+            "Fecha de nacimiento": self.date,
+            "Motivo": self.motive,
+            "Diagnosis": self.diagnosis,
+            "Mascota": self.pet,
+            "Veterinario": self.veterinarian
         }
     
     def __str__(self):

@@ -30,11 +30,11 @@ class Pet(models.Model):
 
     def to_dict(self):
         return {
-            'name': self.name,
-            'birthday': self.birthday,
-            'species': self.species,
-            'race': self.race,
-            'owner': self.owner,
+            'Nombre': self.name,
+            'Fecha de nacimiento': self.birthday,
+            'Especie': self.species,
+            'Raza': self.race,
+            'Dueño': self.owner,
         }
     
     def __str__(self):

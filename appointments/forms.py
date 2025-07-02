@@ -5,6 +5,8 @@ from datetime import datetime, timedelta
 class AppointmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         pet_instance = kwargs.pop('pet', None)
+        # If we are creating the appointment, there is no reason for us to give the diagnosis already
+        is_creating = kwargs.pop('is_creating', None)
 
         super().__init__(*args, **kwargs)
 
@@ -15,6 +17,10 @@ class AppointmentForm(forms.ModelForm):
         if pet_instance:
             self.fields['pet'].initial = pet_instance
             self.fields['pet'].widget.attrs['disabled'] = True
+
+        if is_creating:
+            self.fields['diagnosis'].widget = forms.HiddenInput()
+            self.fields['diagnosis'].label = ''
             
     """
     Return the minimum date for the select datetime in the html form.

@@ -32,7 +32,7 @@ def all_appointments(request):
 
 
 def register_appointment(request, pet_id=None):
-    form = AppointmentForm(pet=pet_id)
+    form = AppointmentForm(pet=pet_id, is_creating=True)
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST)

@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}{{ page_name }}{% endblock %}
+{% block title %}Historia Medica{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'common/register_page.css' %}">
+<link rel="stylesheet" href="{% static 'pets/medic_history.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -14,23 +15,24 @@
         {% for entry in history %}
         <div class="form-group">
             <label><strong>Fecha:</strong></label>
-            <div>{{ entry[0] }}</div>
+            <div>{{ entry.0 }}</div>
         </div>
-            {% for name, attribute in entry[2].items %}
-            <div class="form-group">
-                <label><strong>    {{ key|capfirst }}:</strong></label>
-                <div>    {{ attribute }}</div>
+            {% for name, attribute in entry.2.items %}
+            <div class="form-group indented-item-1">
+                <label><strong>{{ name|capfirst }}:</strong></label>
+                <div>{{ attribute }}</div>
             </div>
             {% endfor %}
 
-            {% if entry[1] == "appointment" %}
-            <div class="form-group">
-                <label><strong>    Notas:</strong></label>
-                {% for note in entry[3] %}
-                <div>        {{ note }}</div>
+            {% if entry.1 == "appointment" %}
+            <div class="form-group indented-item-2">
+                <label><strong>Notas:</strong></label>
+                {% for note in entry.3 %}
+                <div>{{ note }}</div>
                 {% endfor %}
             </div>
             {% endif %}
+            <br>
         {% endfor %}
     </div>
 </div>

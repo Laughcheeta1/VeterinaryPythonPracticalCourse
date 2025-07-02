@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Pet
 from .forms import PetForm
+from appointments.models import Appointment
+from surgeries.models import Surgery
 
 # Create your views here.
 def landing_page(request):
@@ -144,18 +146,12 @@ def particular_pet(request, pet_id):
 
 
 def medic_history(request, pet_id):
-    # TODO
-    pets = Pet.objects.all()
+    entries = [ appointment.info_medic_history() for appointment in Appointment.objects.filter(pet_id=pet_id) ]
+    entries += [ surgery.info_medic_history() for surgery in Surgery.objects.filter(pet_id=pet_id) ]
+
+    entries.sort(key=lambda entry: entry[0])
 
     context = {
-        'page_name' : 'Pets',
-	    'object_name' : 'pet',
-	    'all_url' : 'all_pets',
-	    'register_url' : 'register_pet',
-	    'desired_image_url' : 'pets/images/cute_pet.png',
-	    'image_alt_name' :  'Cute pet in tiger costume',
-        'objects': pets,
-        'base_url': 'particular_pet',
-        'can_create': True,
+        'history': entries,
     }
-    return render(request, '#', context)
+    return render(request, 'pets/medic_history.html', context)

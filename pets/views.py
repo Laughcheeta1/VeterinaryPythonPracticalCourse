@@ -14,7 +14,8 @@ def landing_page(request):
 	    'desired_image_url' : 'pets/images/cute_pet.png',
 	    'image_alt_name' :  'Cute pet in tiger costume',
         'objects': pets,
-        'base_url': 'particular_pet'
+        'base_url': 'particular_pet',
+        'can_create': True,
     }
     return render(request, 'common/landing.html', context)
 

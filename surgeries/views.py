@@ -15,6 +15,7 @@ def landing_page(request):
 	    'image_alt_name' :  'Surgeon',
         'objects' : surgeries,
         'base_url' : 'particular_surgery',
+        'can_create': True,
     }
     return render(request, 'common/landing.html', context)
 

@@ -7,14 +7,15 @@ def landing_page(request):
     appointments = Appointment.objects.all()
 
     context = {
-        'page_name' : 'Appointments',
-	    'object_name' : 'appointment',
-	    'all_url' : 'all_appointments',
-	    'register_url' : 'register_appointment',
-	    'desired_image_url' : 'appointments/images/vet_examining.png',
-	    'image_alt_name' :  'Vet examining cat',
-        'objects' : appointments,
-        'base_url' : 'particular_appointment',
+        'page_name': 'Appointments',
+	    'object_name': 'appointment',
+	    'all_url': 'all_appointments',
+	    'register_url': 'register_appointment',
+	    'desired_image_url': 'appointments/images/vet_examining.png',
+	    'image_alt_name':  'Vet examining cat',
+        'objects': appointments,
+        'base_url': 'particular_appointment',
+        'can_create': True,
     }
     return render(request, 'common/landing.html', context)
 

@@ -11,7 +11,9 @@
 <div class="main_info">
     <img src="{% static desired_image_url %}" class="welcome_image" alt="{{ image_alt_name }}">
     <div class="options-container">
-        <a class="option" href="{% url register_url %}">Register {{ object_name }}</a>
+        {% if can_create %}
+            <a class="option" href="{% url register_url %}">Register {{ object_name }}</a>
+        {% endif %}
     </div>
     <div class="cards-list">
         {% for object in objects %}

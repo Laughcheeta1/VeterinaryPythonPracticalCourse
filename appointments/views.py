@@ -31,8 +31,8 @@ def all_appointments(request):
     return render(request, 'common/all.html', context)
 
 
-def register_appointment(request):
-    form = AppointmentForm()
+def register_appointment(request, pet_id=None):
+    form = AppointmentForm(pet=pet_id)
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST)

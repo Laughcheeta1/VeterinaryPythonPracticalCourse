@@ -4,11 +4,18 @@ from datetime import datetime, timedelta
 
 class AppointmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
+        pet_instance = kwargs.pop('pet', None)
+
         super().__init__(*args, **kwargs)
+
         self.fields['date'].widget.attrs.update({
             'min': self._get_date_appointment(),
         })
 
+        if pet_instance:
+            self.fields['pet'].initial = pet_instance
+            self.fields['pet'].widget.attrs['disabled'] = True
+            
     """
     Return the minimum date for the select datetime in the html form.
 

@@ -130,10 +130,12 @@ def particular_pet(request, pet_id):
         return render(request, 'common/result_page.html', context)
 
     context = {
-        'page_name' : 'Mascota',
+        'page_name': 'Mascota',
         'object': desired_pet,
-        'edit_url' : 'edit_pet',
-        'delete_url' : 'delete_pet',
+        'edit_url': 'edit_pet',
+        'delete_url': 'delete_pet',
+        'register_appointment': True,
+        'object_id': pet_id,
     }
 
     return render(request, 'common/particular.html', context)

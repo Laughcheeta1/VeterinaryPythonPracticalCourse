@@ -156,7 +156,8 @@ def all_annotations(request, appointment_id):
 	    'image_alt_name' :  '',
         'objects' : annotations,
         'base_url' : 'particular_annotation',
-        'can_create': True,
+        'is_annotation': True,
+        'appointment_id': appointment_id,
     }
     
     return render(request, 'common/landing.html', context)

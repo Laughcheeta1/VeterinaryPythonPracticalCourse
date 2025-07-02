@@ -14,15 +14,29 @@
         {% if can_create %}
             <a class="option" href="{% url register_url %}">Register {{ object_name }}</a>
         {% endif %}
+
+        {% if is_annotation %}
+            <a class="option" href="{% url register_url appointment_id %}">Create {{ object_name }}</a>
+        {% endif %}
     </div>
     <div class="cards-list">
-        {% for object in objects %}
-            <a href="{% url base_url object.id %}" class="card">
-                {% for attribute in object.basic_info.values %}
-                    <span class="item">{{ attribute }}</span>
-                {% endfor %}
-            </a>
-        {% endfor %}
+        {% if is_annotation %}
+            {% for object in objects %}
+                <a href="{% url base_url appointment_id object.id %}" class="card">
+                    {% for attribute in object.basic_info.values %}
+                        <span class="item">{{ attribute }}</span>
+                    {% endfor %}
+                </a>
+            {% endfor %}
+        {% else %}
+            {% for object in objects %}
+                <a href="{% url base_url object.id %}" class="card">
+                    {% for attribute in object.basic_info.values %}
+                        <span class="item">{{ attribute }}</span>
+                    {% endfor %}
+                </a>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

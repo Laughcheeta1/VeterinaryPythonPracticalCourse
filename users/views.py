@@ -136,6 +136,7 @@ def particular_user(request, user_id):
         'object': desired_user,
         'edit_url' : 'edit_user',
         'delete_url' : 'delete_user',
+        'editable': True,
     }
 
     return render(request, 'common/particular.html', context)

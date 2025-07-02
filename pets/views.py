@@ -137,6 +137,7 @@ def particular_pet(request, pet_id):
         'delete_url': 'delete_pet',
         'register_appointment': True,
         'object_id': pet_id,
+        'editable': True,
     }
 
     return render(request, 'common/particular.html', context)

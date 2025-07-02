@@ -19,6 +19,7 @@ class AppointmentForm(forms.ModelForm):
             self.fields['pet'].widget.attrs['disabled'] = True
 
         if is_creating:
+            # self.fields['diagnosis'].initial = ''
             self.fields['diagnosis'].widget = forms.HiddenInput()
             self.fields['diagnosis'].label = ''
             

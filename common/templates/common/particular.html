@@ -21,7 +21,7 @@
             <a href="{% url 'register_appointment' object_id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Get an appointment</a>
         {% endif %}
         <a href="{% url 'main_page' %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Go to main page</a>
-        {% if register_appointment %}
+        {% if editable %}
             <a href="{% url edit_url object.id %}" class="submit-btn" style="margin-top: 2rem;">Edit</a>
             <form action="{% url delete_url object.id %}" method="GET" style="display: inline;">
                 {% csrf_token %}

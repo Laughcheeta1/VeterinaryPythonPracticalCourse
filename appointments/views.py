@@ -37,7 +37,6 @@ def register_appointment(request, pet_id=None):
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
             context = {
@@ -135,6 +134,7 @@ def particular_appointment(request, appointment_id):
         'object': desired_appointment,
         'edit_url' : 'edit_appointment',
         'delete_url' : 'delete_appointment',
+        'editable': True,
     }
 
     return render(request, 'common/particular.html', context)

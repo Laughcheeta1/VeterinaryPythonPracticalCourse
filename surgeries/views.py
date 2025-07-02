@@ -134,6 +134,7 @@ def particular_surgery(request, surgery_id):
         'object': desired_surgery,
         'edit_url' : 'edit_surgery',
         'delete_url' : 'delete_surgery',
+        'editable': True,
     }
 
     return render(request, 'common/particular.html', context)

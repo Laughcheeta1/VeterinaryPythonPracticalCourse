@@ -17,10 +17,20 @@
                 <div>{{ attribute }}</div>
             </div>
         {% endfor %}
+
         {% if register_appointment %}
-            <a href="{% url 'register_appointment' object_id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Get an appointment</a>
+        {# For when you want to register an appointment for a pet directly from its page #}
+            <a href="{% url 'register_appointment' pet_id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Get an appointment</a>
         {% endif %}
+
+        {% if is_appointment %}
+        {# in case we are entering from an appointment view we want to show this options %}
+            <a href="{% url 'annotations_appointment' object.id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Go to annotations</a>
+            <a href="{% url 'register_annotation' object.id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Make annotation</a>
+        {% endif %}
+
         <a href="{% url 'main_page' %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Go to main page</a>
+
         {% if editable %}
             <a href="{% url edit_url object.id %}" class="submit-btn" style="margin-top: 2rem;">Edit</a>
             <form action="{% url delete_url object.id %}" method="GET" style="display: inline;">

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Appointment
+from .models import Appointment, Annotation_Appointment
 from datetime import datetime, timedelta
 
 class AppointmentForm(forms.ModelForm):
@@ -77,3 +77,18 @@ class AppointmentForm(forms.ModelForm):
             'diagnosis': 'Diagnosis',
             'veterinarian': 'Veterinario',
         }
+
+
+class AnnotationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        pet_instance = kwargs.pop('appointment_id', None)
+
+        super().__init__(*args, **kwargs)
+
+        self.fields['appointment'].initial = pet_instance
+        self.fields['appointment'].widget.attrs['disabled'] = True
+
+
+    class Meta:
+        model = Annotation_Appointment
+        fields = '__all__'

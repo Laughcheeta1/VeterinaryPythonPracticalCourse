@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Appointment
-from .forms import AppointmentForm
+from .models import Appointment, Annotation_Appointment
+from .forms import AppointmentForm, AnnotationForm
 
 # Create your views here.
 def landing_page(request):
@@ -135,6 +135,138 @@ def particular_appointment(request, appointment_id):
         'edit_url' : 'edit_appointment',
         'delete_url' : 'delete_appointment',
         'editable': True,
+        'is_appointment': True,
     }
 
     return render(request, 'common/particular.html', context)
+
+
+
+
+# For the annotations
+def all_annotations(request, appointment_id):
+    annotations = Annotation_Appointment.objects.filter(appointment_id=appointment_id)
+
+    context = {
+        'page_name' : 'Annotations',
+	    'object_name' : 'annotation',
+	    'all_url' : 'all_annotations',
+	    'register_url' : 'register_annotation',
+	    'desired_image_url' : '',
+	    'image_alt_name' :  '',
+        'objects' : annotations,
+        'base_url' : 'particular_annotation',
+        'can_create': True,
+    }
+    
+    return render(request, 'common/landing.html', context)
+
+
+def register_annotation(request, appointment_id):
+    form = AnnotationForm(appointment_id=appointment_id)
+
+    if request.method == 'POST':
+        form = AnnotationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            context = {
+                'message': 'Registro De Nota Exitoso',
+                'return_page_name' : 'Annotations',
+                'desired_url' : 'annotations_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
+        else:
+            context = {
+                'message': 'No fue posible registrar el nota',
+                'return_page_name' : 'Annotations',
+                'desired_url' : 'annotations_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
+
+    context = { 
+        'form': form,
+        'page_name' : 'Register Annotation'
+    }
+    return render(request, 'common/register.html', context)
+
+
+def edit_annotation(request, appointment_id, annotation_id):
+    try:
+        desired_annotation = Annotation_Appointment.objects.get(pk=annotation_id)
+    except Annotation_Appointment.DoesNotExist:
+        context = {
+            'message': 'the desired annotation does not exist',
+            'return_page_name': 'home page',
+            'desired_url': 'main_page'
+        }
+        return render(request, 'common/result_page.html', context)
+
+    if request.method == 'POST':
+        form = AnnotationForm(request.POST, instance=desired_annotation)
+        if form.is_valid():
+            form.save()
+            context = {
+                'message': 'Actualizacion De Nota Exitoso',
+                'return_page_name' : 'Annotations',
+                'desired_url' : 'annotations_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
+        else:
+            context = {
+                'message': 'No fue posible actualizar el nota',
+                'return_page_name' : 'Annotations',
+                'desired_url' : 'annotations_landing_page'
+            }
+            return render(request, 'common/result_page.html', context)
+    
+    form = AnnotationForm(appointment_id=appointment_id, instance=desired_annotation)
+
+    context = { 
+        'page_name' : 'Edit Annotation',
+        'object': desired_annotation,
+        'form': form,
+    }
+    return render(request, 'common/edit.html', context)
+
+
+def delete_annotation(request, appointment_id, annotation_id):
+    try:
+        desired_annotation = Annotation_Appointment.objects.get(pk=annotation_id)
+    except Annotation_Appointment.DoesNotExist:
+        context = {
+            'message': 'the desired annotation does not exits',
+            'return_page_name': 'home page',
+            'desired_url': 'main_page'
+        }
+        return render(request, 'common/result_page.html', context)
+    
+    desired_annotation.delete()
+    context = {
+        'message': 'El nota fue eliminado exitosamente',
+        'return_page_name' : 'Annotations',
+        'desired_url' : 'annotations_landing_page'
+    }
+    return render(request, 'common/result_page.html', context)
+
+
+def particular_annotation(request, appointment_id, annotation_id):
+    try:
+        desired_annotation = Annotation_Appointment.objects.get(pk=annotation_id)
+    except Annotation_Appointment.DoesNotExist:
+        context = {
+            'message': 'the desired annotation does not exits',
+            'return_page_name': 'home page',
+            'desired_url': 'main_page'
+        }
+        return render(request, 'common/result_page.html', context)
+
+    context = {
+        'page_name' : 'Annotation',
+        'object': desired_annotation,
+        'edit_url' : 'edit_annotation',
+        'delete_url' : 'delete_annotation',
+        'editable': True,
+    }
+
+    return render(request, 'common/particular.html', context)
+

@@ -33,6 +33,18 @@ class Annotation_Appointment(models.Model):
     appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
     annotation = models.CharField()
 
+    def basic_info(self):
+        return{
+            'Cita': self.appointment,
+            'Nota': self.annotation,
+        }
+
+    def complete_info(self):
+        return {
+            'Cita': self.appointment,
+            'Nota': self.annotation,
+        }
+
     def __str__(self):
         return str(self.appointment) + self.annotation[0: 10]  # Get only the first 10 characters of the annotation
 

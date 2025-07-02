@@ -1,3 +1,5 @@
+import csv
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Appointment, Annotation_Appointment
 from .forms import AppointmentForm, AnnotationForm
@@ -294,3 +296,23 @@ def particular_annotation(request, appointment_id, annotation_id):
 
     return render(request, 'common/particular.html', context)
 
+
+def download_csv():
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="appointments.csv"'
+
+    writer = csv.writer(response)
+    appointment_fields = [field.name for field in Appointment._meta.fields]
+    annotation_fields = [field.name for field in Annotation_Appointment._meta.fields]
+    writer.writerow(appointment_fields + annotation_fields)
+
+    for appointment in Appointment.objects.all():
+        wrote_annotation = False
+        for annotation in Annotation_Appointment.objects.filter(appointment_id=appointment.id):
+            wrote_annotation = True
+            writer.writerow([getattr(appointment, field) for field in appointment_fields] + [getattr(annotation, field) for field in annotation_fields])
+
+        if not wrote_annotation:
+            writer.writerow([getattr(appointment, field) for field in appointment_fields] + ['' for _ in annotation_fields])
+
+    return response

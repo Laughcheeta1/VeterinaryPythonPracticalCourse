@@ -1,3 +1,5 @@
+import csv
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import User
 from .forms import UserForm
@@ -140,3 +142,17 @@ def particular_user(request, user_id):
     }
 
     return render(request, 'common/particular.html', context)
+
+
+def download_csv():
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="users.csv"'
+
+    writer = csv.writer(response)
+    fields = [field.name for field in User._meta.fields]
+    writer.writerow(fields)
+
+    for user in User.objects.all():
+        writer.writerow([getattr(user, field) for field in fields])
+
+    return response

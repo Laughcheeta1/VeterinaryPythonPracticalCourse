@@ -1,3 +1,5 @@
+import csv
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Pet
 from .forms import PetForm
@@ -155,3 +157,17 @@ def medic_history(request, pet_id):
         'history': entries,
     }
     return render(request, 'pets/medic_history.html', context)
+
+
+def download_csv():
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="pets.csv"'
+
+    writer = csv.writer(response)
+    fields = [field.name for field in Pet._meta.fields]
+    writer.writerow(fields)
+
+    for pet in Pet.objects.all():
+        writer.writerow([getattr(pet, field) for field in fields])
+
+    return response

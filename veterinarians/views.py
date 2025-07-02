@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Veterinarian
 from .forms import VeterinarianForm
+import csv
+from django.http import HttpResponse
 
 # Create your views here.
 def landing_page(request):
@@ -138,3 +140,17 @@ def particular_veterinarian(request, veterinarian_id):
     }
 
     return render(request, 'common/particular.html', context)
+
+
+def download_csv():
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="veterinarians.csv"'
+
+    writer = csv.writer(response)
+    fields = [field.name for field in Veterinarian._meta.fields]
+    writer.writerow(fields)
+
+    for vet in Veterinarian.objects.all():
+        writer.writerow([getattr(vet, field) for field in fields])
+
+    return response

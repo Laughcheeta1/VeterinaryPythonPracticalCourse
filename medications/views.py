@@ -1,3 +1,5 @@
+import csv
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Medications
 from .forms import MedicationsForm
@@ -138,3 +140,17 @@ def particular_medication(request, medication_id):
     }
 
     return render(request, 'common/particular.html', context)
+
+
+def download_csv():
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="medications.csv"'
+
+    writer = csv.writer(response)
+    fields = [field.name for field in Medications._meta.fields]
+    writer.writerow(fields)
+
+    for medication in Medications.objects.all():
+        writer.writerow([getattr(medication, field) for field in fields])
+
+    return response

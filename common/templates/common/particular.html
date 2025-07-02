@@ -39,6 +39,15 @@
                     Delete
                 </button>
             </form>
+
+        {% elif is_annotation %}
+            <a href="{% url edit_url appoinment_id object.id %}" class="submit-btn" style="margin-top: 2rem;">Edit</a>
+            <form action="{% url delete_url appoinment_id object.id %}" method="GET" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="submit-btn" style="margin-top: 1rem; background-color: red;">
+                    Delete
+                </button>
+            </form>
         {% endif %}
     </div>
 </div>

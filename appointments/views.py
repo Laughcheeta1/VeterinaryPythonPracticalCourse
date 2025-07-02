@@ -288,7 +288,8 @@ def particular_annotation(request, appointment_id, annotation_id):
         'object': desired_annotation,
         'edit_url' : 'edit_annotation',
         'delete_url' : 'delete_annotation',
-        'editable': True,
+        'is_annotation': True,
+        'appoinment_id': appointment_id,
     }
 
     return render(request, 'common/particular.html', context)

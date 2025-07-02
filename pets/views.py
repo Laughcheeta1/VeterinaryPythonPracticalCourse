@@ -136,7 +136,7 @@ def particular_pet(request, pet_id):
         'edit_url': 'edit_pet',
         'delete_url': 'delete_pet',
         'register_appointment': True,
-        'object_id': pet_id,
+        'pet_id': pet_id,
         'editable': True,
     }
 

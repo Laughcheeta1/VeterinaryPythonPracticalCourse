@@ -16,7 +16,6 @@ class AppointmentForm(forms.ModelForm):
 
         if pet_instance:
             self.fields['pet'].initial = pet_instance
-            self.fields['pet'].widget.attrs['disabled'] = True
 
         if is_creating:
             # self.fields['diagnosis'].initial = ''
@@ -81,12 +80,11 @@ class AppointmentForm(forms.ModelForm):
 
 class AnnotationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        pet_instance = kwargs.pop('appointment_id', None)
+        appointment_instance = kwargs.pop('appointment_id', None)
 
         super().__init__(*args, **kwargs)
 
-        self.fields['appointment'].initial = pet_instance
-        self.fields['appointment'].widget.attrs['disabled'] = True
+        self.fields['appointment'].initial = appointment_instance
 
 
     class Meta:

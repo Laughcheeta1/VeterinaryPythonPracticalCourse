@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Appointment, Annotation_Appointment
 from .forms import AppointmentForm, AnnotationForm
+from pets.models import Pet
 
 # Create your views here.
 def landing_page(request):
@@ -36,7 +37,11 @@ def register_appointment(request, pet_id=None):
     form = AppointmentForm(pet=pet_id, is_creating=True)
 
     if request.method == 'POST':
-        form = AppointmentForm(request.POST)
+        if pet_id:
+            form = AppointmentForm(request.POST, pet=pet_id)
+        else:
+            form = AppointmentForm(request.POST)
+
         if form.is_valid():
             form.save()
             context = {
@@ -167,20 +172,25 @@ def register_annotation(request, appointment_id):
     form = AnnotationForm(appointment_id=appointment_id)
 
     if request.method == 'POST':
-        form = AnnotationForm(request.POST)
+        form = AnnotationForm(request.POST, appointment_id=appointment_id)
         if form.is_valid():
             form.save()
             context = {
                 'message': 'Registro De Nota Exitoso',
                 'return_page_name' : 'Annotations',
-                'desired_url' : 'annotations_landing_page'
+                'desired_url' : 'annotations_appointment',
+                'is_annotation': True,
+                'appoinment_id': appointment_id,
+                'is_annotation': True,
             }
             return render(request, 'common/result_page.html', context)
         else:
             context = {
                 'message': 'No fue posible registrar el nota',
                 'return_page_name' : 'Annotations',
-                'desired_url' : 'annotations_landing_page'
+                'desired_url' : 'annotations_appointment',
+                'appoinment_id': appointment_id,
+                'is_annotation': True,
             }
             return render(request, 'common/result_page.html', context)
 
@@ -198,7 +208,9 @@ def edit_annotation(request, appointment_id, annotation_id):
         context = {
             'message': 'the desired annotation does not exist',
             'return_page_name': 'home page',
-            'desired_url': 'main_page'
+            'desired_url': 'main_page',
+            'appoinment_id': appointment_id,
+            'is_annotation': True,
         }
         return render(request, 'common/result_page.html', context)
 
@@ -209,14 +221,18 @@ def edit_annotation(request, appointment_id, annotation_id):
             context = {
                 'message': 'Actualizacion De Nota Exitoso',
                 'return_page_name' : 'Annotations',
-                'desired_url' : 'annotations_landing_page'
+                'desired_url' : 'annotations_appointment',
+                'appoinment_id': appointment_id,
+                'is_annotation': True,
             }
             return render(request, 'common/result_page.html', context)
         else:
             context = {
                 'message': 'No fue posible actualizar el nota',
                 'return_page_name' : 'Annotations',
-                'desired_url' : 'annotations_landing_page'
+                'desired_url' : 'annotations_appointment',
+                'appoinment_id': appointment_id,
+                'is_annotation': True,
             }
             return render(request, 'common/result_page.html', context)
     
@@ -237,7 +253,9 @@ def delete_annotation(request, appointment_id, annotation_id):
         context = {
             'message': 'the desired annotation does not exits',
             'return_page_name': 'home page',
-            'desired_url': 'main_page'
+            'desired_url': 'main_page',
+            'appoinment_id': appointment_id,
+            'is_annotation': True,
         }
         return render(request, 'common/result_page.html', context)
     
@@ -245,7 +263,9 @@ def delete_annotation(request, appointment_id, annotation_id):
     context = {
         'message': 'El nota fue eliminado exitosamente',
         'return_page_name' : 'Annotations',
-        'desired_url' : 'annotations_landing_page'
+        'desired_url' : 'annotations_appointment',
+        'appoinment_id': appointment_id,
+        'is_annotation': True,
     }
     return render(request, 'common/result_page.html', context)
 
@@ -257,7 +277,9 @@ def particular_annotation(request, appointment_id, annotation_id):
         context = {
             'message': 'the desired annotation does not exits',
             'return_page_name': 'home page',
-            'desired_url': 'main_page'
+            'desired_url': 'main_page',
+            'appoinment_id': appointment_id,
+            'is_annotation': True,
         }
         return render(request, 'common/result_page.html', context)
 

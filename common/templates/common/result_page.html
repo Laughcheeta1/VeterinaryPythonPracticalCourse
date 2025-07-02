@@ -11,6 +11,10 @@
 <div class="message-container">
     <p class="result-message">{{ message }}</p>
 
-    <a href="{% url desired_url %}" class="submit-btn">Back to {{ return_page_name }}</a>
+    {% if is_annotation %}
+        <a href="{% url desired_url appoinment_id %}" class="submit-btn">Back to {{ return_page_name }}</a>
+    {% else %}
+        <a href="{% url desired_url %}" class="submit-btn">Back to {{ return_page_name }}</a>
+    {% endif %}
 </div>
 {% endblock %}

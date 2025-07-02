@@ -24,7 +24,7 @@
         {% endif %}
 
         {% if is_appointment %}
-        {# in case we are entering from an appointment view we want to show this options %}
+        {# in case we are entering from an appointment view we want to show this options #}
             <a href="{% url 'annotations_appointment' object.id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Go to annotations</a>
             <a href="{% url 'register_annotation' object.id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Make annotation</a>
         {% endif %}

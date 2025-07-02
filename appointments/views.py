@@ -37,6 +37,7 @@ def register_appointment(request, pet_id=None):
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
             context = {

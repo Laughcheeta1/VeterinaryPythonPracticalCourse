@@ -7,7 +7,7 @@ class Appointment(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.SET_NULL, null=True)
     motive = models.CharField(max_length=250)
     date = models.DateTimeField()
-    diagnosis = models.CharField(max_length=1000)
+    diagnosis = models.CharField(null=True)
     veterinarian = models.ForeignKey(Veterinarian, on_delete=models.SET_NULL, null=True)        
     
     def basic_info(self):

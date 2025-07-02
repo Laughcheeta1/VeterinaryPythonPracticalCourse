@@ -43,6 +43,16 @@ class Surgery(models.Model):
             'surgeon': self.surgeon,
             'type': self.type
         }
+
+    def info_medic_history(self):
+        return (
+            self.date, 
+            "surgery",
+            {
+                'Cirujano': str(self.surgeon),
+                'Tipo de cirugia': str(self.type)
+            }
+        )
     
 
 class Surgeries_Sent(models.Model):

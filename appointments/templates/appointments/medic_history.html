@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page_name }}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'common/register_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <h1>{{ page_name }}</h1>
+    <div class="user-form">
+        
+    </div>
+</div>
+{% endblock %}

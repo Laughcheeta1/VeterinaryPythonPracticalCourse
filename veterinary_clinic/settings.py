@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'surgeries',
     'medications',
     'veterinarians',
+    'csv_manager',
 ]
 
 MIDDLEWARE = [

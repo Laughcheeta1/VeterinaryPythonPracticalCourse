@@ -1,3 +1,10 @@
+# Creadores
+## Santiago Yepes Mesa
+[LinkedIn](www.linkedin.com/in/santiago-yepes-mesa-67ab80270)
+
+## Simon Gomez Castro
+[LinkedIn](www.linkedin.com/in/sgc-9149b4243/)
+
 # Guia de Sistema de Veterinaria Amigos Peludos
 ## Como iniciar la aplicacion?
 ### 1. Para iniciar la aplicacion tiene que tener primero instalado python, y ademas instalar las dependencias definidas en el archivo `requirements.txt` ejecutando el siguiente comando:

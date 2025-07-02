@@ -18,9 +18,10 @@
             </div>
         {% endfor %}
 
-        {% if register_appointment %}
+        {% if is_pet %}
         {# For when you want to register an appointment for a pet directly from its page #}
             <a href="{% url 'register_appointment' pet_id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Get an appointment</a>
+            <a href="{% url 'register_appointment' pet_id %}" class="submit-btn" style="margin-top: 1rem; background-color: #b39ddb;">Medic history</a>
         {% endif %}
 
         {% if is_appointment %}

@@ -135,9 +135,27 @@ def particular_pet(request, pet_id):
         'object': desired_pet,
         'edit_url': 'edit_pet',
         'delete_url': 'delete_pet',
-        'register_appointment': True,
+        'is_pet': True,
         'pet_id': pet_id,
         'editable': True,
     }
 
     return render(request, 'common/particular.html', context)
+
+
+def medic_history(request, pet_id):
+    # TODO
+    pets = Pet.objects.all()
+
+    context = {
+        'page_name' : 'Pets',
+	    'object_name' : 'pet',
+	    'all_url' : 'all_pets',
+	    'register_url' : 'register_pet',
+	    'desired_image_url' : 'pets/images/cute_pet.png',
+	    'image_alt_name' :  'Cute pet in tiger costume',
+        'objects': pets,
+        'base_url': 'particular_pet',
+        'can_create': True,
+    }
+    return render(request, '#', context)

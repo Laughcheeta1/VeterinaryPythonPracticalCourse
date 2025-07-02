@@ -9,9 +9,29 @@
 
 {% block content %}
 <div class="register-container">
-    <h1>{{ page_name }}</h1>
+    <h1>Historia Medica</h1>
     <div class="user-form">
-        
+        {% for entry in history %}
+        <div class="form-group">
+            <label><strong>Fecha:</strong></label>
+            <div>{{ entry[0] }}</div>
+        </div>
+            {% for name, attribute in entry[2].items %}
+            <div class="form-group">
+                <label><strong>    {{ key|capfirst }}:</strong></label>
+                <div>    {{ attribute }}</div>
+            </div>
+            {% endfor %}
+
+            {% if entry[1] == "appointment" %}
+            <div class="form-group">
+                <label><strong>    Notas:</strong></label>
+                {% for note in entry[3] %}
+                <div>        {{ note }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

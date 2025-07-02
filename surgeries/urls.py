@@ -7,5 +7,6 @@ urlpatterns = [
     path("register", views.register_surgery, name="register_surgery"),
     path("one/<int:surgery_id>", views.particular_surgery, name="particular_surgery"),
     path("edit/<int:surgery_id>", views.edit_surgery, name="edit_surgery"),
-    path("delete/<int:surgery_id>", views.delete_surgery, name="delete_surgery")
+    path("delete/<int:surgery_id>", views.delete_surgery, name="delete_surgery"),
+    path("download", views.download_csv, name="download_surgeries"),
 ]

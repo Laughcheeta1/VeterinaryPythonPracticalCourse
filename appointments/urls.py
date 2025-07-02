@@ -9,6 +9,7 @@ urlpatterns = [
     path("one/<int:appointment_id>", views.particular_appointment, name="particular_appointment"),
     path("edit/<int:appointment_id>", views.edit_appointment, name="edit_appointment"),
     path("delete/<int:appointment_id>", views.delete_appointment, name="delete_appointment"),
+    path("download", views.download_csv, name="download_appointments"),
 
     # For the annotation
     path('<int:appointment_id>/annotations/', views.all_annotations, name="annotations_appointment"),

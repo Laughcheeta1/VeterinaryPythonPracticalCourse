@@ -18,6 +18,7 @@ def landing_page(request):
         'objects' : surgeries,
         'base_url' : 'particular_surgery',
         'can_create': True,
+        'download_url': 'download_surgeries',
     }
     return render(request, 'common/landing.html', context)
 
@@ -142,7 +143,7 @@ def particular_surgery(request, surgery_id):
     return render(request, 'common/particular.html', context)
 
 
-def download_csv():
+def download_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="surgeries.csv"'
 

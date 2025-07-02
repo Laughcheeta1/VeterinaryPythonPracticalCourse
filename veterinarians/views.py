@@ -17,6 +17,7 @@ def landing_page(request):
 	    'image_alt_name' :  'Group of veterinaries posing',
         'objects' : veterinarians,
         'base_url' : 'particular_veterinarian',
+        'download_url': 'download_veterinarians',
     }
     
     return render(request, 'common/landing.html', context)
@@ -142,7 +143,7 @@ def particular_veterinarian(request, veterinarian_id):
     return render(request, 'common/particular.html', context)
 
 
-def download_csv():
+def download_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="veterinarians.csv"'
 

@@ -1,9 +1,9 @@
 # Creadores
 ## Santiago Yepes Mesa
-[LinkedIn](www.linkedin.com/in/santiago-yepes-mesa-67ab80270)
+[LinkedIn](https://www.linkedin.com/in/santiago-yepes-mesa-67ab80270)
 
 ## Simon Gomez Castro
-[LinkedIn](www.linkedin.com/in/sgc-9149b4243/)
+[LinkedIn](https://www.linkedin.com/in/sgc-9149b4243/)
 
 # Guia de Sistema de Veterinaria Amigos Peludos
 ## Como iniciar la aplicacion?

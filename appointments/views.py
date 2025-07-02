@@ -306,14 +306,14 @@ def download_csv(request):
 
     writer = csv.writer(response)
     appointment_fields = [field.name for field in Appointment._meta.fields]
-    annotation_fields = [field.name for field in Annotation_Appointment._meta.fields]
+    annotation_fields = ["annotation"]
     writer.writerow(appointment_fields + annotation_fields)
 
     for appointment in Appointment.objects.all():
         wrote_annotation = False
         for annotation in Annotation_Appointment.objects.filter(appointment_id=appointment.id):
             wrote_annotation = True
-            writer.writerow([getattr(appointment, field) for field in appointment_fields] + [getattr(annotation, field) for field in annotation_fields])
+            writer.writerow([getattr(appointment, field) for field in appointment_fields] + [getattr(annotation, "annotation")])
 
         if not wrote_annotation:
             writer.writerow([getattr(appointment, field) for field in appointment_fields] + ['' for _ in annotation_fields])

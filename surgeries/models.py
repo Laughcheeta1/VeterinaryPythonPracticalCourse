@@ -24,7 +24,7 @@ class Surgery(models.Model):
         Veterinarian, 
         on_delete=models.SET_NULL,
         null=True,
-        validators=[validate_surgeon],
+        # validators=[validate_surgeon],
         )
 
     def __str__(self):
